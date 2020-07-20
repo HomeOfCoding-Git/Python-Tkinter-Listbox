@@ -5,4 +5,4 @@ The listbox is illustated through a "Notes mock-up app".
 This mock-up app is not for production, of which is outside the scope of this tutorial.
 
 Updated:
-If "Notes" and "CSV" directories do NOT exist, auto populate
+If "Notes" and "CSV" directories do NOT exist, auto populate.
