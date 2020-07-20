@@ -280,6 +280,14 @@ def send_mail(*args):
         msg['To'] = get_email
         msg.set_content(get_text)
 
+        # Create CSV directory (if it doesn't exist)
+        csv_name = 'CSV/'
+        if csv_name != os.path.basename(csv_name):
+            try:
+                os.mkdir(csv_name)
+            except:
+                None
+
         # Send Email
         try:
             with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
@@ -295,7 +303,7 @@ def send_mail(*args):
             text_data = get_text.strip()
             
             with open(csv_filename, 'a') as f_append_csv:
-                f_append_csv.write(get_email + ',' + str(dt) + '\n' + text_data + ('\n'*4))
+                f_append_csv.write(('\n'*2) + text_data + ',' + get_email + ',' + str(dt) + ('\n'*1))
 
 
         except:
@@ -491,6 +499,13 @@ del_btn.pack(side='left', fill='x', expand=True)
 save_note_btn = Button(footer_frame, bg=bg_color, fg=bg_color, relief='flat')
 save_note_btn['state'] = DISABLED
 save_note_btn.pack(side='right', fill='x', expand=True)
+
+dir_name = 'Notes/'
+if dir_name != os.path.basename(dir_name):
+    try:
+        os.mkdir(dir_name)
+    except:
+        None
 
 # On load.. Display the content of the listbox (existing files)
 file_name = os.listdir('Notes/')
